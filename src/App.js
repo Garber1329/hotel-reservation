@@ -1,5 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import './App.css';
+import {BrowserRouter} from "react-router-dom";
+import { AuthContext } from "./context";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import AppRouter from "./router/AppRouter";
 
 function App() {
   const [isAuth, setIsAuth] = useState(false);
@@ -19,18 +23,12 @@ function App() {
         isLoading
       }}>
         <BrowserRouter>
-          <Navbar/>
-          <AppRouter/>
-          <Footer/>
+            <Header/>
+            <AppRouter/>
+            <Footer/>
         </BrowserRouter>
       </AuthContext.Provider>
   )
-
-  return (
-    <div className="App">
-
-    </div>
-  );
 }
 
 export default App;
