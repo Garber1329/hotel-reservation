@@ -9,20 +9,25 @@ const AppRouter = () => {
     const {isAuth} = useContext(AuthContext);
 
     return (
-        isAuth
-            ?
-            <Routes>
-                <Route path="/main" element={<Main/>} />
-                {/*redirect*/}
-                <Route path="/" element={<Navigate replace to="/main" />} />
-            </Routes>
-            :
-            <Routes>
-                <Route path="/main" element={<Main/>} />
-                <Route path="/login" element={<Login/>} />
-                {/*redirect*/}
-                <Route path="/" element={<Navigate replace to="/main" />} />
-            </Routes>
+        <main>
+            {
+                isAuth
+                    ?
+                    <Routes>
+                        <Route path="/main" element={<Main/>} />
+                        {/*redirect*/}
+                        <Route path="/" element={<Navigate replace to="/main" />} />
+                    </Routes>
+                    :
+                    <Routes>
+                        <Route path="/main" element={<Main/>} />
+                        <Route path="/login" element={<Login/>} />
+                        {/*redirect*/}
+                        <Route path="/" element={<Navigate replace to="/main" />} />
+                    </Routes>
+            }
+        </main>
+
     );
 };
 

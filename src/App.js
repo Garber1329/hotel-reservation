@@ -14,21 +14,20 @@ function App() {
       setIsAuth(true)
     }
     setLoading(false);
-  }, [])
-
+  }, []);
   return (
       <AuthContext.Provider value={{
-        isAuth,
-        setIsAuth,
-        isLoading
+          isAuth,
+          setIsAuth,
+          isLoading
       }}>
-        <BrowserRouter>
-            <Header/>
-            <AppRouter/>
-            <Footer/>
-        </BrowserRouter>
+          <BrowserRouter>
+              <Header/>
+              <AppRouter/>
+              <Footer/>
+          </BrowserRouter>
       </AuthContext.Provider>
   )
-}
+};
 
 export default App;

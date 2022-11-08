@@ -2,7 +2,7 @@ import React, {useContext} from 'react';
 import {AuthContext} from "../context";
 
 function Login() {
-    const {isAuth, setIsAuth} = useContext(AuthContext);
+    const {setIsAuth} = useContext(AuthContext);
 
     const login = event => {
         event.preventDefault();
