@@ -25,9 +25,6 @@ function App() {
       }}>
           <BrowserRouter>
               <Main/>
-              {/*<Header/>
-              <AppRouter/>
-              <Footer/>*/}
           </BrowserRouter>
       </AuthContext.Provider>
   )

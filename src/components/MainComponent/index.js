@@ -1,19 +1,21 @@
 import React from "react";
 import {connect} from "react-redux";
 /*import Loading from "../Loading";*/
-import {fetchRooms} from "../../store/actionCreators";
+import {fetchRooms, fetchReservation} from "../../store/actionCreators";
 import Header from "../Header";
 import AppRouter from "../../router/AppRouter";
 import Footer from "../Footer";
 
 const mapStateToProps = state => {
     return {
-        rooms: state.rooms
+        rooms: state.rooms,
+        reservation: state.reservation
     }
 }
 
 const mapDispatchToProps = dispatch => ({
-    fetchRooms: () => { dispatch(fetchRooms())}
+    fetchRooms: () => { dispatch(fetchRooms())},
+    fetchReservation: () => {dispatch(fetchReservation())}
 });
 
 const  CheckProps = (props) => {
@@ -47,7 +49,7 @@ const  CheckProps = (props) => {
 class Main extends React.Component{
     componentDidMount() {
         this.props.fetchRooms();
-
+        this.props.fetchReservation()
     }
 
     render() {
