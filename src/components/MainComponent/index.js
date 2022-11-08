@@ -34,11 +34,10 @@ const  CheckProps = (props) => {
         );
     }
     else  {
-        console.log(props.props)
         return (
             <div>
                 <Header/>
-                <AppRouter/>
+                <AppRouter props={props.props}/>
                 <Footer/>
             </div>
 
