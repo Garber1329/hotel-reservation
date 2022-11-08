@@ -1,9 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import {BrowserRouter} from "react-router-dom";
 import { AuthContext } from "./context";
-import Header from "./components/Header";
+/*import Header from "./components/Header";
 import Footer from "./components/Footer";
-import AppRouter from "./router/AppRouter";
+import AppRouter from "./router/AppRouter";*/
+import Main from "./components/MainComponent";
 
 function App() {
   const [isAuth, setIsAuth] = useState(false);
@@ -15,6 +16,7 @@ function App() {
     }
     setLoading(false);
   }, []);
+
   return (
       <AuthContext.Provider value={{
           isAuth,
@@ -22,9 +24,10 @@ function App() {
           isLoading
       }}>
           <BrowserRouter>
-              <Header/>
+              <Main/>
+              {/*<Header/>
               <AppRouter/>
-              <Footer/>
+              <Footer/>*/}
           </BrowserRouter>
       </AuthContext.Provider>
   )

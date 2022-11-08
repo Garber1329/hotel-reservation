@@ -2,7 +2,7 @@ import React, {useContext} from 'react';
 import {Routes, Route, Navigate/*, Redirect*/} from 'react-router-dom';
 /*import {privateRoutes, publicRoutes} from "./index";*/
 import {AuthContext} from "../context";
-import Main from "../pages/Main";
+import Home from "../pages/Home";
 import Login from "../pages/Login";
 
 const AppRouter = () => {
@@ -14,16 +14,16 @@ const AppRouter = () => {
                 isAuth
                     ?
                     <Routes>
-                        <Route path="/main" element={<Main/>} />
+                        <Route path="/home" element={<Home/>} />
                         {/*redirect*/}
-                        <Route path="/" element={<Navigate replace to="/main" />} />
+                        <Route path="/" element={<Navigate replace to="/home" />} />
                     </Routes>
                     :
                     <Routes>
-                        <Route path="/main" element={<Main/>} />
+                        <Route path="/home" element={<Home/>} />
                         <Route path="/login" element={<Login/>} />
                         {/*redirect*/}
-                        <Route path="/" element={<Navigate replace to="/main" />} />
+                        <Route path="/" element={<Navigate replace to="/home" />} />
                     </Routes>
             }
         </main>

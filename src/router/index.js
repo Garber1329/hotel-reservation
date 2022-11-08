@@ -1,14 +1,14 @@
 
 import Login from "../pages/Login";
-import Main from "../pages/Main";
+import Home from "../pages/Home";
 
 
 export const privateRoutes = [
-    {path: '/main', component: Main, exact: true},
+    {path: '/main', component: Home, exact: true},
 
 ]
 
 export const publicRoutes = [
     {path: '/login', component: Login, exact: true},
-    /*{path: '/main', component: Main, exact: true},*/
+    /*{path: '/main', component: Home, exact: true},*/
 ]
