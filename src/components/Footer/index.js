@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 function Footer(){
 
     return (
-        <footer>
+        <footer className="footer">
             <div className="container">
                 <div className="py-3 my-4">
                     <ul className="nav justify-content-center border-bottom pb-3 mb-3">

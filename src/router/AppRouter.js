@@ -9,7 +9,7 @@ const AppRouter = (props) => {
     const {isAuth} = useContext(AuthContext);
 
     return (
-        <main>
+        <main className="main">
             {
                 isAuth
                     ?

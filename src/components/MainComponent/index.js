@@ -36,7 +36,7 @@ const  CheckProps = (props) => {
     }
     else  {
         return (
-            <div>
+            <div className="wrapper">
                 <Header/>
                 <AppRouter props={props.props}/>
                 <Footer/>

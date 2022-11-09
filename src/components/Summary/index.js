@@ -1,14 +1,14 @@
 import React from 'react';
 
-function Summary({steps, setSteps, totalSum, adults, checkIn, checkOut, nameRoom, fPostReservation}) {
+function Summary({steps, setSteps, priceRoom, totalSum, countDate, adults, checkIn, checkOut, nameRoom, fPostReservation}) {
 
     return (
         <aside>
             <div className="card">
                 <div className="card-body">
-                    <h5 className="card-title">Reservation Summary</h5>
+                    <h3 className="card-title">Reservation Summary</h3>
                     <div className="d-flex justify-content-between">
-                        <h3>Room: {nameRoom}</h3>
+                        <h5>Room: {nameRoom}</h5>
                     </div>
                     <div className="d-flex justify-content-between mb-3">
                         <div>
@@ -36,18 +36,28 @@ function Summary({steps, setSteps, totalSum, adults, checkIn, checkOut, nameRoom
                             }).format(checkOut)}
                         </strong></div>
                     </div>
+
                     <div className="mb-3">
-                        <div className="font-weight-bold">People</div>
-                        <div>{adults} Adults</div>
+                        <div className="font-weight-bold">People: {adults}</div>
                     </div>
-                    <div className="card-total">
-                        <div className="mb-3">
-                            <div>
-                                <div className="price">Total</div>
+                    {(priceRoom && totalSum) > 0 ? <div>
+                            <div className="mb-3">
+                                <div className="font-weight-bold">Price room: {priceRoom} $</div>
                             </div>
-                            <div className="price">€ {totalSum}</div>
+                            <div className="mb-3">
+                                <div className="font-weight-bold">Night: {countDate}</div>
+                            </div>
+                            <div className="card-total">
+                                <div className="mb-3">
+                                    <h5 className="price">Total</h5>
+                                    <h5 className="price">€ {totalSum}</h5>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                        :
+                        <div></div>
+                    }
+
 
                     <div className="btn btn-lg btn-primary" onClick={() => {
                         setSteps(steps+1)

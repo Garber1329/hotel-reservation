@@ -108,6 +108,8 @@ function Reservation(props) {
                             steps={steps}
                             setSteps={setSteps}
                             nameRoom={selectedRoom.name}
+                            priceRoom={selectedRoom.price}
+                            countDate={countDate}
                             totalSum={totalSum}
                             adults={adults}
                             checkIn={checkIn}
