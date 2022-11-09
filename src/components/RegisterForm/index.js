@@ -11,7 +11,7 @@ function RegisterForm(
                     <div className="row g-3">
                         <div className="col-sm-6">
                             <label htmlFor="firstName" className="form-label">First name</label>
-                            <input type="text" className="form-control" id="firstName" placeholder="" value=""
+                            <input type="text" className="form-control" id="firstName"
                                    required=""
                                    value ={firsName}
                                    onChange={e => setFirstName(e.target.value)}
@@ -23,7 +23,7 @@ function RegisterForm(
 
                         <div className="col-sm-6">
                             <label htmlFor="lastName" className="form-label">Last name</label>
-                            <input type="text" className="form-control" id="lastName" placeholder="" value=""
+                            <input type="text" className="form-control" id="lastName"
                                    required=""
                                    value={lastName}
                                    onChange={e => setLastName(e.target.value)}></input>

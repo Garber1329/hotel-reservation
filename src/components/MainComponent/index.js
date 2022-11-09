@@ -1,7 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
 /*import Loading from "../Loading";*/
-import {fetchRooms, fetchReservation} from "../../store/actionCreators";
+import {fetchRooms, fetchReservation, postReservation} from "../../store/actionCreators";
 import Header from "../Header";
 import AppRouter from "../../router/AppRouter";
 import Footer from "../Footer";
@@ -14,6 +14,7 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => ({
+    postReservation: (newReservation) => dispatch(postReservation(newReservation)),
     fetchRooms: () => { dispatch(fetchRooms())},
     fetchReservation: () => {dispatch(fetchReservation())}
 });

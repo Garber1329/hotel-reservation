@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Summary({steps, setSteps, totalSum, adults, checkIn, checkOut, nameRoom, SelectRoom}) {
+function Summary({steps, setSteps, totalSum, adults, checkIn, checkOut, nameRoom, fPostReservation}) {
 
     return (
         <aside>
@@ -48,8 +48,12 @@ function Summary({steps, setSteps, totalSum, adults, checkIn, checkOut, nameRoom
                             <div className="price">€ {totalSum}</div>
                         </div>
                     </div>
+
                     <div className="btn btn-lg btn-primary" onClick={() => {
                         setSteps(steps+1)
+                        if(steps===2){
+                            fPostReservation()
+                        }
                     }}>Continue</div>
                 </div>
             </div>

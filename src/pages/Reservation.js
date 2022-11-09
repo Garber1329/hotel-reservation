@@ -4,6 +4,7 @@ import AllRooms from "../components/AllRooms";
 import Summary from "../components/Summary";
 import RegisterForm from "../components/RegisterForm";
 import OrderConfirmation from "../components/OrderConfirmation";
+import OrderAccepted from "../components/OrderAccepted";
 
 function Reservation(props) {
     const [checkIn, setCheckIn] = useState(new Date());
@@ -24,35 +25,6 @@ function Reservation(props) {
         if(steps === 0) {
             setSelectedRoom(room)
         }
-        /*else if(steps === 1) {
-            /!*const new1Reservation = {
-                id_room: selectedRoom.id,
-                date_reservation: new Date().toISOString(),
-                check_in_date: checkIn,
-                check_out_date: checkOut,
-                first_name: firsName,
-                last_name: lastName,
-                email: email,
-                phone: telephone,
-                special_request: specialRequest,
-                total_price: totalSum
-            };
-            setNewReservation(new1Reservation);*!/
-        } else if(steps === 2) {
-            /!*const new1Reservation = {
-                id_room: selectedRoom.id,
-                date_reservation: new Date().toISOString(),
-                check_in_date: checkIn,
-                check_out_date: checkOut,
-                first_name: firsName,
-                last_name: lastName,
-                email: email,
-                phone: telephone,
-                special_request: specialRequest,
-                total_price: totalSum
-            };
-            setNewReservation(new1Reservation);*!/
-        }*/
     }
 
     useEffect(() => {
@@ -76,6 +48,8 @@ function Reservation(props) {
             };
             setNewReservation(new1Reservation);
         }
+
+
     },[checkIn, checkOut, firsName, lastName, email, telephone, specialRequest, totalSum, selectedRoom.id, steps]);
 
     function Steps(){
@@ -107,42 +81,53 @@ function Reservation(props) {
                     selectedRoom={selectedRoom}
                 />
             )
-        } else if(steps === 3){
-            return (
-                <div></div>
-            )
         }
     }
 
-    return (
-        <div className="container">
-            <div className="row">
-                <Search
-                    checkIn={checkIn}
-                    setCheckIn={setCheckIn}
-                    checkOut={checkOut}
-                    setCheckOut={setCheckOut}
-                    setAdults={setAdults}/>
-            </div>
-            <div className="row">
-                <div className="col-8">
-                    {Steps()}
-                </div>
-                <div className="col-4">
-                    <Summary
-                        steps={steps}
-                        setSteps={setSteps}
-                        nameRoom={selectedRoom.name}
-                        totalSum={totalSum}
-                        adults={adults}
+    function fPostReservation(){
+        console.log(props.postReservation(newReservation));
+    }
+
+    if(steps !== 3){
+        return (
+            <div className="container">
+                <div className="row">
+                    <Search
                         checkIn={checkIn}
+                        setCheckIn={setCheckIn}
                         checkOut={checkOut}
-                        SelectRoom={SelectRoom}
-                    />
+                        setCheckOut={setCheckOut}
+                        setAdults={setAdults}/>
+                </div>
+                <div className="row">
+                    <div className="col-8">
+                        {Steps()}
+                    </div>
+                    <div className="col-4">
+                        <Summary
+                            steps={steps}
+                            setSteps={setSteps}
+                            nameRoom={selectedRoom.name}
+                            totalSum={totalSum}
+                            adults={adults}
+                            checkIn={checkIn}
+                            checkOut={checkOut}
+                            fPostReservation={fPostReservation}
+                        />
+                    </div>
                 </div>
             </div>
-        </div>
-    );
+        );
+    } else {
+        return (
+            <div className="container">
+                <div className="row">
+                  <OrderAccepted/>
+                </div>
+            </div>
+        );
+    }
+
 }
 
 export default Reservation;

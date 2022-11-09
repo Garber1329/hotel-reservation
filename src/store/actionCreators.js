@@ -79,10 +79,10 @@ export const addReservation = (reservation) => ({
     payload: reservation
 });
 
-export const postReservation = (chatId, from, text) => (dispatch) => {
+export const postReservation = (newReservation) => (dispatch) => {
 
-    const newReservation = {
-        /*id_room: chatId,
+    /*const newReservation = {
+        /!*id_room: chatId,
         date_reservation: new Date().toISOString(),
         check_in_date: ,
         check_out_date: ,
@@ -91,8 +91,8 @@ export const postReservation = (chatId, from, text) => (dispatch) => {
         email: ,
         phone: ,
         special_request: ,
-        total_price:*/
-    };
+        total_price:*!/
+    };*/
 
     return fetch(baseUrl + 'reservation', {
         method: "POST",
