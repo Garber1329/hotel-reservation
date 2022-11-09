@@ -1,9 +1,9 @@
 import React from 'react';
 import {baseUrl} from "../../store/baseUrl";
 
-function OneRoom({room, SelectRoom, setSelectedRoom}){
+function OneRoom({room, SelectRoom}){
     return (
-        <div className="card mb-3" onMouseOver={() => {setSelectedRoom(room)}}>
+        <div className="card mb-3" /*onMouseOver={() => {setSelectedRoom(room)}}*/>
             <div className="row g-0">
                 <div className="col-md-4">
                     <img src={baseUrl+room.photo} className="img-fluid rounded-start" alt="..."></img>
@@ -18,7 +18,9 @@ function OneRoom({room, SelectRoom, setSelectedRoom}){
                         </div>
                         <div className="d-flex justify-content-between">
                             <p className="card-text"><small className="text-muted">Capacity: {room.capacity}</small></p>
-                            <div className="btn btn-primary" onClick={() => {SelectRoom()}}>
+                            <div className="btn btn-primary" onClick={() => {
+                                                                    SelectRoom(room)
+                                                                    }}>
                                 <h5 className="card-text">{room.price}$</h5>
                             </div>
                         </div>

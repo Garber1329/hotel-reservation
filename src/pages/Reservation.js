@@ -1,30 +1,70 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Search from "../components/Search";
 import AllRooms from "../components/AllRooms";
 import Summary from "../components/Summary";
+import RegisterForm from "../components/RegisterForm";
 
 function Reservation(props) {
     const [checkIn, setCheckIn] = useState(new Date());
     const [checkOut, setCheckOut] = useState(new Date());
-    const [adults, setAdults] = useState(0);
+    const [adults, setAdults] = useState(1);
     const [countDate, setCountDate] = useState(0);
     const [selectedRoom, setSelectedRoom] = useState(0);
     const [steps, setSteps] = useState(0)
+    const [totalSum, setTotalSum] = useState(0);
+    const [firsName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const [telephone, setTelephone] = useState("");
+    const [email, setEmail] = useState("");
+    const [specialRequest, setSpecialRequest] = useState("");
 
-    function SelectRoom (){
+    const newReservation = {
+        id_room: selectedRoom.id,
+        date_reservation: new Date().toISOString(),
+        check_in_date: checkIn,
+        check_out_date: checkOut,
+        first_name: firsName,
+        last_name: lastName,
+        email: email,
+        phone: telephone,
+        special_request: specialRequest,
+        total_price: totalSum
+    };
+
+    useEffect(() => {
         setCountDate(checkOut.getDate()-checkIn.getDate())
+        setTotalSum(selectedRoom.price * countDate);
+    },[selectedRoom.price, countDate, checkIn, checkOut]);
+
+    function SelectRoom (room){
+        if(steps === 0) {
+            setSelectedRoom(room)
+        } else if(steps === 1){
+
+        }
+
     }
+
     function Steps(){
         if(steps === 0) {
             return(
                 <AllRooms
                     rooms={props.rooms.rooms.filter(room => room.capacity >= adults)}
                     SelectRoom={SelectRoom}
-                    setSelectedRoom={setSelectedRoom}/>
+                    />
             )
         } else if(steps === 1){
             return (
-                <div>step 2</div>
+                <RegisterForm
+                    setFirstName={setFirstName}
+                    setLastName={setLastName}
+                    setTelephone={setTelephone}
+                    setEmail={setEmail}
+                    setSpecialRequest={setSpecialRequest}/>
+            )
+        } else if(steps === 1){
+            return (
+                <div></div>
             )
         }
     }
@@ -46,7 +86,13 @@ function Reservation(props) {
                 <div className="col-4">
                     <Summary
                         steps={steps}
-                        setSteps={setSteps}/>
+                        setSteps={setSteps}
+                        nameRoom={selectedRoom.name}
+                        totalSum={totalSum}
+                        adults={adults}
+                        checkIn={checkIn}
+                        checkOut={checkOut}
+                    />
                 </div>
             </div>
         </div>

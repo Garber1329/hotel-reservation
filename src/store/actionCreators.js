@@ -81,16 +81,22 @@ export const addReservation = (reservation) => ({
 
 export const postReservation = (chatId, from, text) => (dispatch) => {
 
-    const newMessage = {
-        chatId: chatId,
-        date: new Date().toISOString(),
-        from: from,
-        text: text
+    const newReservation = {
+        /*id_room: chatId,
+        date_reservation: new Date().toISOString(),
+        check_in_date: ,
+        check_out_date: ,
+        first_name: ,
+        last_name: ,
+        email: ,
+        phone: ,
+        special_request: ,
+        total_price:*/
     };
 
-    return fetch(baseUrl + 'messages', {
+    return fetch(baseUrl + 'reservation', {
         method: "POST",
-        body: JSON.stringify(newMessage),
+        body: JSON.stringify(newReservation),
         headers: {
             "Content-Type": "application/json"
         },
@@ -111,7 +117,7 @@ export const postReservation = (chatId, from, text) => (dispatch) => {
         .then(response => response.json())
         .then(response => dispatch(addReservation(response)))
         .catch(error => {
-            console.log('post message', error.message);
-            alert('Your message could not be posted\nError: ' + error.message);
+            console.log('post reservation', error.message);
+            alert('Your reservation could not be posted\nError: ' + error.message);
         });
 };

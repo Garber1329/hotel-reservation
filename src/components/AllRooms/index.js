@@ -1,7 +1,7 @@
 import React from 'react';
 import OneRoom from "../OneRoom";
 
-function AllRooms({rooms, SelectRoom, setSelectedRoom}) {
+function AllRooms({rooms, SelectRoom}) {
     return <div>
         {
             rooms.length > 0 ?
@@ -13,7 +13,6 @@ function AllRooms({rooms, SelectRoom, setSelectedRoom}) {
                                         key={room.id}
                                         room={room}
                                         SelectRoom={SelectRoom}
-                                        setSelectedRoom={setSelectedRoom}
                                     />
                                 )
                             }
