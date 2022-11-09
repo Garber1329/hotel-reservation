@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Summary({steps, setSteps, totalSum, adults, checkIn, checkOut, nameRoom}) {
+function Summary({steps, setSteps, totalSum, adults, checkIn, checkOut, nameRoom, SelectRoom}) {
 
     return (
         <aside>
@@ -48,7 +48,9 @@ function Summary({steps, setSteps, totalSum, adults, checkIn, checkOut, nameRoom
                             <div className="price">€ {totalSum}</div>
                         </div>
                     </div>
-                    <div className="btn btn-lg btn-primary" onClick={() => {setSteps(steps+1)}}>Continue</div>
+                    <div className="btn btn-lg btn-primary" onClick={() => {
+                        setSteps(steps+1)
+                    }}>Continue</div>
                 </div>
             </div>
         </aside>

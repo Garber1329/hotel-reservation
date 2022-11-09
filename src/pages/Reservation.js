@@ -3,6 +3,7 @@ import Search from "../components/Search";
 import AllRooms from "../components/AllRooms";
 import Summary from "../components/Summary";
 import RegisterForm from "../components/RegisterForm";
+import OrderConfirmation from "../components/OrderConfirmation";
 
 function Reservation(props) {
     const [checkIn, setCheckIn] = useState(new Date());
@@ -17,33 +18,65 @@ function Reservation(props) {
     const [telephone, setTelephone] = useState("");
     const [email, setEmail] = useState("");
     const [specialRequest, setSpecialRequest] = useState("");
+    const [newReservation, setNewReservation] = useState(0);
 
-    const newReservation = {
-        id_room: selectedRoom.id,
-        date_reservation: new Date().toISOString(),
-        check_in_date: checkIn,
-        check_out_date: checkOut,
-        first_name: firsName,
-        last_name: lastName,
-        email: email,
-        phone: telephone,
-        special_request: specialRequest,
-        total_price: totalSum
-    };
+    function SelectRoom (room){
+        if(steps === 0) {
+            setSelectedRoom(room)
+        }
+        /*else if(steps === 1) {
+            /!*const new1Reservation = {
+                id_room: selectedRoom.id,
+                date_reservation: new Date().toISOString(),
+                check_in_date: checkIn,
+                check_out_date: checkOut,
+                first_name: firsName,
+                last_name: lastName,
+                email: email,
+                phone: telephone,
+                special_request: specialRequest,
+                total_price: totalSum
+            };
+            setNewReservation(new1Reservation);*!/
+        } else if(steps === 2) {
+            /!*const new1Reservation = {
+                id_room: selectedRoom.id,
+                date_reservation: new Date().toISOString(),
+                check_in_date: checkIn,
+                check_out_date: checkOut,
+                first_name: firsName,
+                last_name: lastName,
+                email: email,
+                phone: telephone,
+                special_request: specialRequest,
+                total_price: totalSum
+            };
+            setNewReservation(new1Reservation);*!/
+        }*/
+    }
 
     useEffect(() => {
         setCountDate(checkOut.getDate()-checkIn.getDate())
         setTotalSum(selectedRoom.price * countDate);
     },[selectedRoom.price, countDate, checkIn, checkOut]);
 
-    function SelectRoom (room){
-        if(steps === 0) {
-            setSelectedRoom(room)
-        } else if(steps === 1){
-
+    useEffect(() => {
+        if(steps === 2) {
+            const new1Reservation = {
+                id_room: selectedRoom.id,
+                date_reservation: new Date().toISOString(),
+                check_in_date: checkIn,
+                check_out_date: checkOut,
+                first_name: firsName,
+                last_name: lastName,
+                email: email,
+                phone: telephone,
+                special_request: specialRequest,
+                total_price: totalSum
+            };
+            setNewReservation(new1Reservation);
         }
-
-    }
+    },[checkIn, checkOut, firsName, lastName, email, telephone, specialRequest, totalSum, selectedRoom.id, steps]);
 
     function Steps(){
         if(steps === 0) {
@@ -56,13 +89,25 @@ function Reservation(props) {
         } else if(steps === 1){
             return (
                 <RegisterForm
+                    firsName={firsName}
                     setFirstName={setFirstName}
+                    lastName={lastName}
                     setLastName={setLastName}
+                    telephone={telephone}
                     setTelephone={setTelephone}
+                    email={email}
                     setEmail={setEmail}
+                    specialRequest={specialRequest}
                     setSpecialRequest={setSpecialRequest}/>
             )
-        } else if(steps === 1){
+        } else if(steps === 2){
+            return (
+                <OrderConfirmation
+                    newReservation={newReservation}
+                    selectedRoom={selectedRoom}
+                />
+            )
+        } else if(steps === 3){
             return (
                 <div></div>
             )
@@ -92,6 +137,7 @@ function Reservation(props) {
                         adults={adults}
                         checkIn={checkIn}
                         checkOut={checkOut}
+                        SelectRoom={SelectRoom}
                     />
                 </div>
             </div>
