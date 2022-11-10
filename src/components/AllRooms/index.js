@@ -20,7 +20,7 @@ function AllRooms({rooms, SelectRoom}) {
                     </div>
                 )
                 :
-                (<div>Кімнати відсутні</div>)
+                (<div>There are no rooms</div>)
         }
     </div>
 

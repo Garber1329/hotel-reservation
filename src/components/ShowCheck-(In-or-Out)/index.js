@@ -62,7 +62,7 @@ function ShowCheck({reservation}) {
                     )
                     :
                     (
-                        <div>Бронювання відсутні</div>
+                        <div>There are no reservations</div>
                     )
 
             }

@@ -5,7 +5,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import ShowCheck from "../components/ShowCheck-(In-or-Out)";
 
-function Admin ({rooms, reservation}) {
+function Admin ({reservation}) {
     const [dataSelection, setDataSelection] = useState("")
     const reservRevers = [...reservation].reverse();
     const [date, setDate] = useState(new Date())

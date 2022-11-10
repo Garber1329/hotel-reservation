@@ -24,13 +24,12 @@ const AppRouter = (props) => {
                         />
                         <Route path="/reservation" element={
                             <Reservation
-                                rooms={props.props.rooms}
+                                rooms={props.props.rooms.rooms}
                                 postReservation={props.props.postReservation}
                             />}
                         />
                         <Route path="/admin" element={
                             <Admin
-                                rooms={props.props.rooms.rooms}
                                 reservation={props.props.reservation.reservation}
                         />} />
                         {/*redirect*/}
@@ -46,7 +45,7 @@ const AppRouter = (props) => {
                         />
                         <Route path="/reservation" element={
                             <Reservation
-                                rooms={props.props.rooms}
+                                rooms={props.props.rooms.rooms}
                                 postReservation={props.props.postReservation}
                             />
                         } />

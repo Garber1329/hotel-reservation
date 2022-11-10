@@ -6,7 +6,7 @@ import RegisterForm from "../components/RegisterForm";
 import OrderConfirmation from "../components/OrderConfirmation";
 import OrderAccepted from "../components/OrderAccepted";
 
-function Reservation(props) {
+function Reservation({rooms, postReservation}) {
     const [checkIn, setCheckIn] = useState(new Date());
     const [checkOut, setCheckOut] = useState(new Date());
     const [adults, setAdults] = useState(1);
@@ -56,7 +56,7 @@ function Reservation(props) {
         if(steps === 0) {
             return(
                 <AllRooms
-                    rooms={props.rooms.rooms.filter(room => room.capacity >= adults)}
+                    rooms={rooms.filter(room => room.capacity >= adults)}
                     SelectRoom={SelectRoom}
                     />
             )
@@ -85,7 +85,7 @@ function Reservation(props) {
     }
 
     function fPostReservation(){
-        props.postReservation(newReservation)
+        postReservation(newReservation)
     }
 
     if(steps !== 3){

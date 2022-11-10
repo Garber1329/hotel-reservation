@@ -3,7 +3,7 @@ import {baseUrl} from "../../store/baseUrl";
 
 function OneRoom({room, SelectRoom}){
     return (
-        <div className="card mb-3" /*onMouseOver={() => {setSelectedRoom(room)}}*/>
+        <div className="card mb-3">
             <div className="row g-0">
                 <div className="col-md-4">
                     <img src={baseUrl+room.photo} className="img-fluid rounded-start" alt="..."></img>
