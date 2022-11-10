@@ -14,8 +14,8 @@ function Login() {
     return (
         <div className="container">
             <div className="text-center">
-                <main className="form-signin w-100 m-auto">
-                    <form>
+                <main className="d-flex justify-content-center">
+                    <form style={{width: "400px"}}>
                         <h1 className="h3 mb-3 fw-normal">Please sign in</h1>
 
                         <div className="form-floating">

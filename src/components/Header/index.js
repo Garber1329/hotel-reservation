@@ -27,12 +27,14 @@ function Header(){
                     </ul>
 
                     <div className="col-md-3 text-end">
-                        {isAuth ?
-                            <button onClick={logout} type="button" className="btn btn-primary">Log out</button>
+                        {isAuth ?(
+                            <div>
+                                <Link to="/admin" className="btn btn-outline-primary">Admin panel</Link>
+                                <Link onClick={logout} to="/home" className="btn btn-primary ms-2">Log out</Link>
+                            </div>
+                            )
                             :
-                            <Link to="/login" >
-                                <button type="button" className="btn btn-outline-primary me-2">Login</button>
-                            </Link>
+                            <Link to="/login" className="btn btn-outline-primary me-2">Login</Link>
                         }
                     </div>
                 </div>

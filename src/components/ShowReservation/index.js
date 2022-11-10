@@ -21,9 +21,9 @@ function ShowReservation({reservation}) {
                             <div>total_price</div>
                             <div>date_reservation</div>
                         </li>
-                        {reservation.map(res => {
+                        {reservation.map((res, index) => {
                             return(
-                                <li className="list-group-item d-flex" aria-current="true" key={res.id}>
+                                <li className="list-group-item d-flex" aria-current="true" key={index}>
                                     <div>{res.id}</div>
                                     <div>{res.id_room}</div>
                                     <div>

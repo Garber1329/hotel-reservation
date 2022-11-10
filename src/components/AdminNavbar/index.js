@@ -1,11 +1,14 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 function AdminNavbar({setDataSelection}) {
+
+    const [navTitle, setNavTitle]=useState('');
 
     return (
         <nav className="navbar bg-white border border-gray border-1">
             <div className="container-fluid">
                 <a className="navbar-brand" href="#">Admin navbar</a>
+                <h5>{navTitle}</h5>
                 <button className="navbar-toggler" type="button" data-bs-toggle="offcanvas"
                         data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                     <span className="navbar-toggler-icon"></span>
@@ -21,13 +24,33 @@ function AdminNavbar({setDataSelection}) {
                         <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
                             <li className="nav-item">
                                 <div className="nav-link" aria-current="page"
-                                     onClick={()=>{setDataSelection("reservation")}}
+                                     onClick={()=>{
+                                         setDataSelection("reservation")
+                                         setNavTitle("Reservation")
+                                     }}
                                 >
                                     Reservation
                                 </div>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" aria-current="page" href="#">Home</a>
+                                <div className="nav-link" aria-current="page"
+                                     onClick={()=>{
+                                         setDataSelection("CheckIn")
+                                         setNavTitle("CheckIn")
+                                     }}
+                                >
+                                    CheckIn
+                                </div>
+                            </li>
+                            <li className="nav-item">
+                                <div className="nav-link" aria-current="page"
+                                     onClick={()=>{
+                                         setDataSelection("CheckOut")
+                                         setNavTitle("CheckOut")
+                                     }}
+                                >
+                                    CheckOut
+                                </div>
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link" href="#">Link</a>
