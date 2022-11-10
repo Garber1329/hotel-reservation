@@ -17,7 +17,11 @@ const AppRouter = (props) => {
                     ?
                     <Routes>
                         <Route path="/home" element={<Home/>} />
-                        <Route path="/rooms" element={<Rooms/>} />
+                        <Route path="/rooms" element={
+                            <Rooms
+                                rooms={props.props.rooms.rooms}
+                            />}
+                        />
                         <Route path="/reservation" element={
                             <Reservation
                                 rooms={props.props.rooms}
@@ -35,7 +39,11 @@ const AppRouter = (props) => {
                     :
                     <Routes>
                         <Route path="/home" element={<Home/>} />
-                        <Route path="/rooms" element={<Rooms/>} />
+                        <Route path="/rooms" element={
+                            <Rooms
+                                rooms={props.props.rooms.rooms}
+                            />}
+                        />
                         <Route path="/reservation" element={
                             <Reservation
                                 rooms={props.props.rooms}
