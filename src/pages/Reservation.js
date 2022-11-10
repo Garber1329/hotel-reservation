@@ -85,7 +85,7 @@ function Reservation(props) {
     }
 
     function fPostReservation(){
-        console.log(props.postReservation(newReservation));
+        props.postReservation(newReservation)
     }
 
     if(steps !== 3){

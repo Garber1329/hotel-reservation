@@ -1,0 +1,11 @@
+.show-reservation{
+  .list-group-item{
+    div:not(last-child){
+      margin-right: 10px;
+    }
+    div{
+      width: 110px;
+      word-wrap: break-word;
+    }
+  }
+}
