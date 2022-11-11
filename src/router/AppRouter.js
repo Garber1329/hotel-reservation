@@ -6,6 +6,7 @@ import Login from "../pages/Login";
 import Reservation from "../pages/Reservation";
 import Admin from "../pages/Admin";
 import Rooms from "../pages/Rooms";
+import About from "../pages/About";
 
 const AppRouter = (props) => {
     const {isAuth} = useContext(AuthContext);
@@ -16,7 +17,8 @@ const AppRouter = (props) => {
                 isAuth
                     ?
                     <Routes>
-                        <Route path="/home" element={<Home/>} />
+                        <Route path="/home" element={<About/>} />
+                        <Route path="/about" element={<Home/>} />
                         <Route path="/rooms" element={
                             <Rooms
                                 rooms={props.props.rooms.rooms}
@@ -38,6 +40,7 @@ const AppRouter = (props) => {
                     :
                     <Routes>
                         <Route path="/home" element={<Home/>} />
+                        <Route path="/home" element={<About/>} />
                         <Route path="/rooms" element={
                             <Rooms
                                 rooms={props.props.rooms.rooms}

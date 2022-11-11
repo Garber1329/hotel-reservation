@@ -12,6 +12,7 @@ function Admin ({reservation}) {
     const [dateSecond, setDateSecond] = useState(new Date());
     const [countReservation, setCountReservation] = useState(0);
 
+
     function CencelFilterReservation(){
         setReservRevers([...reservation].reverse());
     }
@@ -23,6 +24,7 @@ function Admin ({reservation}) {
                 (new Date(res.check_in_date) <= new Date(dateSecond.setHours(23,59,59)));
         });
         setReservRevers(newReserv);
+        setCountReservation(0);
     }
 
     function OutDate() {
@@ -71,13 +73,16 @@ function Admin ({reservation}) {
         } else if (dataSelection === "CheckIn"){
             return (
                 <div>
-                    <div className='d-flex'>
+                    <div className='d-flex align-items-center'>
                         <div className="p-3">
                             Choose a check-in date:
                             <DatePicker
                                 dateFormat='dd/MM/yyyy'
                                 selected={dateFirst}
-                                onChange={(date) => setDateFirst(date)}
+                                onChange={(date) => {
+                                    setCountReservation(0)
+                                    setDateFirst(date)}
+                            }
                             />
                         </div>
                         Count: {countReservation}
@@ -103,13 +108,16 @@ function Admin ({reservation}) {
         } else if (dataSelection === "CheckOut"){
             return (
                 <div>
-                    <div className='d-flex'>
+                    <div className='d-flex align-items-center'>
                         <div className="p-3">
                             Choose a check-out date:
                             <DatePicker
                                 dateFormat='dd/MM/yyyy'
                                 selected={dateFirst}
-                                onChange={(date) => setDateFirst(date)}
+                                onChange={(date) => {
+                                    setCountReservation(0)
+                                    setDateFirst(date)
+                                }}
                             />
                         </div>
                         Count: {countReservation}

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Oriya:wght@700&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -20,6 +22,10 @@
     height: 100%;
     color: white;
 
+    .logo{
+        font-size: 60px;
+    }
+
     .home-header__background{
         position: absolute;
         top: 0;
@@ -37,3 +43,13 @@
     }
 }
 
+.react-datepicker-popper{
+    z-index: 10;
+}
+
+.logo{
+    font-family: 'Noto Serif Oriya', serif;
+    font-weight: bold;
+    font-size: 30px;
+    margin-top: 5px;
+}

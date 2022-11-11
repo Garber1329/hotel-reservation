@@ -7,7 +7,7 @@ function Home() {
         <div>
             <div className="home-header position-relative overflow-hidden p-3 p-md-5 text-center">
                 <div className="col-md-5 p-lg-5 mx-auto my-5">
-                    <h1 className="display-4 fw-normal">Luxury HOTEL</h1>
+                    <h1 className="logo display-4 fw-normal">Luxury Hotel</h1>
                     <p className="lead fw-normal">And an even wittier subheading to boot. Jumpstart your marketing
                         efforts with this example based on Apple’s marketing pages.</p>
                     <div className="btn btn-outline-secondary">Coming soon</div>
