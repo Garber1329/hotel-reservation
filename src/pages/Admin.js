@@ -10,6 +10,7 @@ function Admin ({reservation}) {
     const [reservRevers, setReservRevers] = useState([...reservation].reverse());
     const [dateFirst, setDateFirst] = useState(new Date());
     const [dateSecond, setDateSecond] = useState(new Date());
+    const [countReservation, setCountReservation] = useState(0);
 
     function CencelFilterReservation(){
         setReservRevers([...reservation].reverse());
@@ -59,24 +60,30 @@ function Admin ({reservation}) {
                                     }}
                             >Cencel</button>
                         </div>
+                        Count: {countReservation}
                     </div>
                     <ShowReservation
                         reservation={reservRevers}
+                        setCountReservation={setCountReservation}
                     />
                 </div>
                 )
         } else if (dataSelection === "CheckIn"){
             return (
                 <div>
-                    <div className="p-3">
-                        Choose a check-in date:
-                        <DatePicker
-                            dateFormat='dd/MM/yyyy'
-                            selected={dateFirst}
-                            onChange={(date) => setDateFirst(date)}
-                        />
+                    <div className='d-flex'>
+                        <div className="p-3">
+                            Choose a check-in date:
+                            <DatePicker
+                                dateFormat='dd/MM/yyyy'
+                                selected={dateFirst}
+                                onChange={(date) => setDateFirst(date)}
+                            />
+                        </div>
+                        Count: {countReservation}
                     </div>
                     <ShowCheck
+                        setCountReservation={setCountReservation}
                         reservation={reservRevers.filter(res =>
                             new Intl.DateTimeFormat('en-GB', {
                                 year: 'numeric',
@@ -96,15 +103,19 @@ function Admin ({reservation}) {
         } else if (dataSelection === "CheckOut"){
             return (
                 <div>
-                    <div className="p-3">
-                        Choose a check-out date:
-                        <DatePicker
-                            dateFormat='dd/MM/yyyy'
-                            selected={dateFirst}
-                            onChange={(date) => setDateFirst(date)}
-                        />
+                    <div className='d-flex'>
+                        <div className="p-3">
+                            Choose a check-out date:
+                            <DatePicker
+                                dateFormat='dd/MM/yyyy'
+                                selected={dateFirst}
+                                onChange={(date) => setDateFirst(date)}
+                            />
+                        </div>
+                        Count: {countReservation}
                     </div>
                     <ShowCheck
+                        setCountReservation={setCountReservation}
                         reservation={reservRevers.filter(res =>
                             new Intl.DateTimeFormat('en-GB', {
                                 year: 'numeric',
