@@ -22,6 +22,7 @@ function ShowReservation({reservation}) {
                             <div>date_reservation</div>
                         </li>
                         {reservation.map((res, index) => {
+
                             return(
                                 <li className="list-group-item d-flex" aria-current="true" key={index}>
                                     <div>{res.id}</div>

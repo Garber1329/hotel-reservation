@@ -50,7 +50,7 @@ function Summary({steps, setSteps, priceRoom, totalSum, countDate, adults, check
                             <div className="card-total">
                                 <div className="mb-3">
                                     <h5 className="price">Total</h5>
-                                    <h5 className="price">€ {totalSum}</h5>
+                                    <h5 className="price">$ {totalSum}</h5>
                                 </div>
                             </div>
                         </div>
