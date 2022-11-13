@@ -1,10 +1,37 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 function About({postCFMessage}) {
 
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [message, setMessage] = useState('');
+
     function SendForm(event){
         event.preventDefault();
-        postCFMessage(event.target[0].value, event.target[1].value, event.target[2].value);
+        postCFMessage(name, email, message);
+        setName("");
+        setEmail("");
+        setMessage("");
+        /*return(
+            <div className="modal" tabIndex="-1">
+                <div className="modal-dialog">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h5 className="modal-title">Modal title</h5>
+                            <button type="button" className="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                        </div>
+                        <div className="modal-body">
+                            <p>Modal body text goes here.</p>
+                        </div>
+                        <div className="modal-footer">
+                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" className="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        )*/
     }
 
     return (
@@ -67,24 +94,33 @@ function About({postCFMessage}) {
             </div>
             <div className="row">
                 <div className="col-8">
-                    <form onSubmit={event => SendForm(event)}>
+                    <form>
                         <h3 className="mb-3 mt-5">Contact form</h3>
                         <div className="mb-3">
                             <label htmlFor="Name" className="form-label">First and Last name</label>
                             <input type="text" className="form-control" id="Name"
+                                   value ={name}
+                                   onChange={e => setName(e.target.value)}
                                    placeholder="Name"></input>
                         </div>
                         <div className="mb-3">
                             <label htmlFor="Email" className="form-label">Email address</label>
                             <input type="email" className="form-control" id="Email"
+                                   value ={email}
+                                   onChange={e => setEmail(e.target.value)}
                                    placeholder="name@example.com"></input>
                         </div>
                         <div className="mb-3">
                             <label htmlFor="Textarea1" className="form-label">Example textarea</label>
-                            <textarea className="form-control" id="Textarea1" rows="3"></textarea>
+                            <textarea className="form-control" id="Textarea1" rows="3"
+                                      value ={message}
+                                      onChange={e => setMessage(e.target.value)}
+                            ></textarea>
                         </div>
                         <div className="mb-3">
-                            <button type="submit" className="btn btn-primary mb-3 ms-auto">Send</button>
+                            <button className="btn btn-primary mb-3 ms-auto"
+                                    onClick={event=>SendForm(event)}
+                            >Send</button>
                         </div>
                     </form>
                 </div>

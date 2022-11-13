@@ -38,6 +38,7 @@ const AppRouter = (props) => {
                         <Route path="/admin" element={
                             <Admin
                                 reservation={props.props.reservation.reservation}
+                                messages={props.props.messages.messages}
                         />} />
                         {/*redirect*/}
                         <Route path="/" element={<Navigate replace to="/home" />} />

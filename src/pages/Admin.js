@@ -4,10 +4,12 @@ import ShowReservation from "../components/ShowReservation";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import ShowCheck from "../components/ShowCheck-(In-or-Out)";
+import ShowCFMessages from "../components/ShowCFMessages";
 
-function Admin ({reservation}) {
+function Admin ({reservation, messages}) {
     const [dataSelection, setDataSelection] = useState("")
     const [reservRevers, setReservRevers] = useState([...reservation].reverse());
+    const messagesRevers = [...messages].reverse();
     const [dateFirst, setDateFirst] = useState(new Date());
     const [dateSecond, setDateSecond] = useState(new Date());
     const [countReservation, setCountReservation] = useState(0);
@@ -139,6 +141,12 @@ function Admin ({reservation}) {
                         )}
                     />
                 </div>
+            )
+        } else if (dataSelection === "CFMessages"){
+            return (
+                <ShowCFMessages
+                    messages={messagesRevers}
+                />
             )
         }
     }

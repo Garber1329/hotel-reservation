@@ -53,6 +53,16 @@ function AdminNavbar({setDataSelection}) {
                                 </div>
                             </li>
                             <li className="nav-item">
+                                <div className="nav-link" aria-current="page"
+                                     onClick={()=>{
+                                         setDataSelection("CFMessages")
+                                         setNavTitle("CFMessages")
+                                     }}
+                                >
+                                    Contact Form Messages
+                                </div>
+                            </li>
+                            <li className="nav-item">
                                 <a className="nav-link" href="#">Link</a>
                             </li>
                             <li className="nav-item dropdown">
