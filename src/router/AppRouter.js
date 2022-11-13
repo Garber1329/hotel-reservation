@@ -10,6 +10,7 @@ import About from "../pages/About";
 
 const AppRouter = (props) => {
     const {isAuth} = useContext(AuthContext);
+    console.log(props)
 
     return (
         <main className="main">
@@ -17,8 +18,12 @@ const AppRouter = (props) => {
                 isAuth
                     ?
                     <Routes>
-                        <Route path="/home" element={<About/>} />
-                        <Route path="/about" element={<Home/>} />
+                        <Route path="/home" element={<Home/>} />
+                        <Route path="/about" element={
+                            <About
+                                postCFMessage={props.props.postCFMessage}
+                            />}
+                        />
                         <Route path="/rooms" element={
                             <Rooms
                                 rooms={props.props.rooms.rooms}
@@ -40,7 +45,11 @@ const AppRouter = (props) => {
                     :
                     <Routes>
                         <Route path="/home" element={<Home/>} />
-                        <Route path="/home" element={<About/>} />
+                        <Route path="/about" element={
+                            <About
+                                postCFMessage={props.props.postCFMessage}
+                            />}
+                        />
                         <Route path="/rooms" element={
                             <Rooms
                                 rooms={props.props.rooms.rooms}

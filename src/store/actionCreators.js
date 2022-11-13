@@ -121,3 +121,79 @@ export const postReservation = (newReservation) => (dispatch) => {
             alert('Your reservation could not be posted\nError: ' + error.message);
         });
 };
+
+/**.......... All CFMessages ............................ */
+
+export const fetchCFMessages = () => (dispatch) => {
+    return fetch(baseUrl + 'messages')
+        .then(response => {
+                if (response.ok) {
+                    return response;
+                } else {
+                    let error = new Error('Error ' + response.status + ': ' + response.statusText);
+                    error.response = response;
+                    throw error;
+                }
+            },
+            error => {
+                let errmess = new Error(error.message);
+                throw errmess;
+            })
+        .then(response => response.json())
+        .then(messages => dispatch(addCFMessages(messages)))
+        .catch(error => dispatch(cfMessagesFailed(error.message)));
+};
+
+export const cfMessagesFailed = (errmess) => ({
+    type: ActionTypes.CONTACT_FORM_FAILED,
+    payload: errmess
+});
+
+export const addCFMessages = (messages) => ({
+    type: ActionTypes.ADD_CONTACT_FORM,
+    payload: messages
+});
+
+/**.......... Post Reservation ............................ */
+
+export const addCFMessage = (message) => ({
+    type: ActionTypes.POST_CONTACT_FORM,
+    payload: message
+});
+
+export const postCFMessage = (name, email, message) => (dispatch) => {
+
+    const newCFMessages = {
+        date: new Date().toISOString(),
+        name: name,
+        email: email,
+        messages: message
+    };
+
+    return fetch(baseUrl + 'messages', {
+        method: "POST",
+        body: JSON.stringify(newCFMessages),
+        headers: {
+            "Content-Type": "application/json"
+        },
+        credentials: "same-origin"
+    })
+        .then(response => {
+                if (response.ok) {
+                    return response;
+                } else {
+                    let error = new Error('Error ' + response.status + ': ' + response.statusText);
+                    error.response = response;
+                    throw error;
+                }
+            },
+            error => {
+                throw error;
+            })
+        .then(response => response.json())
+        .then(response => dispatch(addCFMessage(response)))
+        .catch(error => {
+            console.log('post CFMessages', error.message);
+            alert('Your messages could not be posted\nError: ' + error.message);
+        });
+};

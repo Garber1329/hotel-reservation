@@ -2,7 +2,6 @@ import React from 'react';
 import AllRooms from "../components/AllRooms";
 
 function Rooms({rooms}) {
-    console.log(rooms)
     return (
         <div className="">
             <div className="row mb-5">
