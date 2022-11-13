@@ -6,11 +6,10 @@ import Login from "../pages/Login";
 import Reservation from "../pages/Reservation";
 import Admin from "../pages/Admin";
 import Rooms from "../pages/Rooms";
-import About from "../pages/About";
+import Contact from "../pages/Contact";
 
 const AppRouter = (props) => {
     const {isAuth} = useContext(AuthContext);
-    console.log(props)
 
     return (
         <main className="main">
@@ -19,8 +18,8 @@ const AppRouter = (props) => {
                     ?
                     <Routes>
                         <Route path="/home" element={<Home/>} />
-                        <Route path="/about" element={
-                            <About
+                        <Route path="/contact" element={
+                            <Contact
                                 postCFMessage={props.props.postCFMessage}
                             />}
                         />
@@ -33,6 +32,7 @@ const AppRouter = (props) => {
                             <Reservation
                                 rooms={props.props.rooms.rooms}
                                 postReservation={props.props.postReservation}
+                                services={props.props.services.services}
                             />}
                         />
                         <Route path="/admin" element={
@@ -46,8 +46,8 @@ const AppRouter = (props) => {
                     :
                     <Routes>
                         <Route path="/home" element={<Home/>} />
-                        <Route path="/about" element={
-                            <About
+                        <Route path="/contact" element={
+                            <Contact
                                 postCFMessage={props.props.postCFMessage}
                             />}
                         />
@@ -60,6 +60,7 @@ const AppRouter = (props) => {
                             <Reservation
                                 rooms={props.props.rooms.rooms}
                                 postReservation={props.props.postReservation}
+                                services={props.props.services.services}
                             />
                         } />
                         <Route path="/login" element={<Login/>} />

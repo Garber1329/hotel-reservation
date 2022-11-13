@@ -6,7 +6,7 @@ import RegisterForm from "../components/RegisterForm";
 import OrderConfirmation from "../components/OrderConfirmation";
 import OrderAccepted from "../components/OrderAccepted";
 
-function Reservation({rooms, postReservation}) {
+function Reservation({rooms, postReservation, services}) {
     const [checkIn, setCheckIn] = useState(new Date());
     const [checkOut, setCheckOut] = useState(new Date());
     const [adults, setAdults] = useState(1);
@@ -48,8 +48,6 @@ function Reservation({rooms, postReservation}) {
             };
             setNewReservation(new1Reservation);
         }
-
-
     },[checkIn, checkOut, firsName, lastName, email, telephone, specialRequest, totalSum, selectedRoom.id, steps]);
 
     function Steps(){

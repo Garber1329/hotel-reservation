@@ -43,8 +43,8 @@
     }
 }
 
-.react-datepicker-popper{
-    z-index: 10;
+.react-datepicker-popper {
+    z-index: 10!important;
 }
 
 .logo{
@@ -56,4 +56,10 @@
 
 .table{
     margin: 0;
+}
+
+.contact-form{
+    padding: 25px;
+    border: 1px solid gray;
+    border-radius: 25px;
 }

@@ -197,3 +197,42 @@ export const postCFMessage = (name, email, message) => (dispatch) => {
             alert('Your messages could not be posted\nError: ' + error.message);
         });
 };
+
+/**.......... Services ............................ */
+
+export const fetchServices = () => (dispatch) => {
+
+    dispatch(servicesLoading(true));
+
+    return fetch(baseUrl + 'services')
+        .then(response => {
+                if (response.ok) {
+                    return response;
+                } else {
+                    var error = new Error('Error ' + response.status + ': ' + response.statusText);
+                    error.response = response;
+                    throw error;
+                }
+            },
+            error => {
+                var errmess = new Error(error.message);
+                throw errmess;
+            })
+        .then(response => response.json())
+        .then(services => dispatch(addServices(services)))
+        .catch(error => dispatch(servicesFailed(error.message)));
+}
+
+export const servicesLoading = () => ({
+    type: ActionTypes.SERVICES_LOADING
+});
+
+export const servicesFailed = (errmess) => ({
+    type: ActionTypes.SERVICES_FAILED,
+    payload: errmess
+});
+
+export const addServices = (services) => ({
+    type: ActionTypes.ADD_SERVICES,
+    payload: services
+});

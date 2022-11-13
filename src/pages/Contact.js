@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-function About({postCFMessage}) {
+function Contact({postCFMessage}) {
 
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -12,26 +12,7 @@ function About({postCFMessage}) {
         setName("");
         setEmail("");
         setMessage("");
-        /*return(
-            <div className="modal" tabIndex="-1">
-                <div className="modal-dialog">
-                    <div className="modal-content">
-                        <div className="modal-header">
-                            <h5 className="modal-title">Modal title</h5>
-                            <button type="button" className="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                        </div>
-                        <div className="modal-body">
-                            <p>Modal body text goes here.</p>
-                        </div>
-                        <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" className="btn btn-primary">Save changes</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        )*/
+        alert("Message sent");
     }
 
     return (
@@ -94,8 +75,8 @@ function About({postCFMessage}) {
             </div>
             <div className="row">
                 <div className="col-8">
-                    <form>
-                        <h3 className="mb-3 mt-5">Contact form</h3>
+                    <form className="contact-form mt-5">
+                        <h3 className="mb-3 ">Contact form</h3>
                         <div className="mb-3">
                             <label htmlFor="Name" className="form-label">First and Last name</label>
                             <input type="text" className="form-control" id="Name"
@@ -118,7 +99,7 @@ function About({postCFMessage}) {
                             ></textarea>
                         </div>
                         <div className="mb-3">
-                            <button className="btn btn-primary mb-3 ms-auto"
+                            <button className="btn btn-primary ms-auto"
                                     onClick={event=>SendForm(event)}
                             >Send</button>
                         </div>
@@ -129,4 +110,4 @@ function About({postCFMessage}) {
     );
 }
 
-export default About;
+export default Contact;

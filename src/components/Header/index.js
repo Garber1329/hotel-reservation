@@ -22,7 +22,7 @@ function Header(){
                         <li><Link to="/home" className="nav-link px-2 link-dark">Home</Link></li>
                         <li><Link to="/reservation" className="nav-link px-2 link-dark">Reservation</Link></li>
                         <li><Link to="/rooms" className="nav-link px-2 link-dark">Rooms</Link></li>
-                        <li><Link to="/about" className="nav-link px-2 link-dark">About</Link></li>
+                        <li><Link to="/contact" className="nav-link px-2 link-dark">Contact</Link></li>
                     </ul>
 
                     <div className="col-md-3 text-end">
