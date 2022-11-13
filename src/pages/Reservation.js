@@ -5,6 +5,7 @@ import Summary from "../components/Summary";
 import RegisterForm from "../components/RegisterForm";
 import OrderConfirmation from "../components/OrderConfirmation";
 import OrderAccepted from "../components/OrderAccepted";
+import Services from "../components/Services";
 
 function Reservation({rooms, postReservation, services}) {
     const [checkIn, setCheckIn] = useState(new Date());
@@ -12,7 +13,9 @@ function Reservation({rooms, postReservation, services}) {
     const [adults, setAdults] = useState(1);
     const [countDate, setCountDate] = useState(0);
     const [selectedRoom, setSelectedRoom] = useState(0);
-    const [steps, setSteps] = useState(0)
+    const [selectedServices, setSelectedServices] = useState([]);
+    const [steps, setSteps] = useState(0);
+
     const [totalSum, setTotalSum] = useState(0);
     const [firsName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
@@ -20,6 +23,10 @@ function Reservation({rooms, postReservation, services}) {
     const [email, setEmail] = useState("");
     const [specialRequest, setSpecialRequest] = useState("");
     const [newReservation, setNewReservation] = useState(0);
+
+    function SelectServices(service){
+        setSelectedServices([...selectedServices, service]);
+    }
 
     function SelectRoom (room){
         if(steps === 0) {
@@ -30,10 +37,13 @@ function Reservation({rooms, postReservation, services}) {
     useEffect(() => {
         setCountDate(checkOut.getDate()-checkIn.getDate())
         setTotalSum(selectedRoom.price * countDate);
-    },[selectedRoom.price, countDate, checkIn, checkOut]);
+        if(steps === 1) {
+            selectedServices.map(serv => setTotalSum(totalSum + serv.price))
+        }
+    },[selectedRoom.price, countDate, checkIn, checkOut, totalSum]);
 
     useEffect(() => {
-        if(steps === 2) {
+        if(steps === 3) {
             const new1Reservation = {
                 id_room: selectedRoom.id,
                 date_reservation: new Date().toISOString(),
@@ -44,6 +54,7 @@ function Reservation({rooms, postReservation, services}) {
                 email: email,
                 phone: telephone,
                 special_request: specialRequest,
+                selectedServices: selectedServices,
                 total_price: totalSum
             };
             setNewReservation(new1Reservation);
@@ -58,7 +69,14 @@ function Reservation({rooms, postReservation, services}) {
                     SelectRoom={SelectRoom}
                     />
             )
-        } else if(steps === 1){
+        } else if(steps === 1) {
+            return(
+                <Services
+                    services={services}
+                    SelectServices={SelectServices}
+                />
+            )
+        } else if(steps === 2){
             return (
                 <RegisterForm
                     firsName={firsName}
@@ -72,7 +90,7 @@ function Reservation({rooms, postReservation, services}) {
                     specialRequest={specialRequest}
                     setSpecialRequest={setSpecialRequest}/>
             )
-        } else if(steps === 2){
+        } else if(steps === 3){
             return (
                 <OrderConfirmation
                     newReservation={newReservation}
@@ -86,7 +104,7 @@ function Reservation({rooms, postReservation, services}) {
         postReservation(newReservation)
     }
 
-    if(steps !== 3){
+    if(steps !== 4){
         return (
             <div className="container">
                 <div className="row">
@@ -113,6 +131,7 @@ function Reservation({rooms, postReservation, services}) {
                             checkIn={checkIn}
                             checkOut={checkOut}
                             fPostReservation={fPostReservation}
+                            selectedServices={selectedServices}
                         />
                     </div>
                 </div>

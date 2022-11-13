@@ -30,6 +30,19 @@ function OrderConfirmation({selectedRoom, newReservation}){
                     <li className="list-group-item">Last name: {newReservation.last_name}</li>
                     <li className="list-group-item">Email: {newReservation.email}</li>
                     <li className="list-group-item">Phone: {newReservation.phone}</li>
+                    {/*<li className="list-group-item">Selected services:
+                        {newReservation.selectedServices > 0 ?
+                            <div>
+                                {newReservation.selectedServices.map((sel,index) =>
+                                    <div className="ms-4" key={index}>
+                                        {sel.name}
+                                    </div>
+                                )}
+                            </div>
+                            :
+                            <div></div>
+                        }
+                    </li>*/}
                     <li className="list-group-item">Special request: {newReservation.special_request}</li>
                 </ul>
             </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Summary({steps, setSteps, priceRoom, totalSum, countDate, adults, checkIn, checkOut, nameRoom, fPostReservation}) {
+function Summary({steps, setSteps, priceRoom, totalSum, countDate, adults, checkIn, checkOut, nameRoom, fPostReservation, selectedServices}) {
 
     return (
         <aside>
@@ -47,6 +47,15 @@ function Summary({steps, setSteps, priceRoom, totalSum, countDate, adults, check
                             <div className="mb-3">
                                 <div className="font-weight-bold">Night: {countDate}</div>
                             </div>
+                            <div className="mb-3">
+                                {
+                                    selectedServices.map((serv, index) =>
+                                        <div className="font-weight-bold mt-1" key={index}>
+                                            {serv.name}: {serv.price}$
+                                        </div>
+                                    )
+                                }
+                            </div>
                             <div className="card-total">
                                 <div className="mb-3">
                                     <h5 className="price">Total</h5>
@@ -57,11 +66,9 @@ function Summary({steps, setSteps, priceRoom, totalSum, countDate, adults, check
                         :
                         <div></div>
                     }
-
-
                     <div className="btn btn-lg btn-primary" onClick={() => {
                         setSteps(steps+1)
-                        if(steps===2){
+                        if(steps===3){
                             fPostReservation()
                         }
                     }}>Continue</div>
