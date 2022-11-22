@@ -26,6 +26,7 @@ function Reservation({rooms, postReservation, services}) {
 
     function SelectServices(service){
         setSelectedServices([...selectedServices, service]);
+        setTotalSum(totalSum + service.price)
     }
 
     function SelectRoom (room){
@@ -37,10 +38,10 @@ function Reservation({rooms, postReservation, services}) {
     useEffect(() => {
         setCountDate(checkOut.getDate()-checkIn.getDate())
         setTotalSum(selectedRoom.price * countDate);
-        if(steps === 1) {
+        /*if(steps === 1) {
             selectedServices.map(serv => setTotalSum(totalSum + serv.price))
-        }
-    },[selectedRoom.price, countDate, checkIn, checkOut, totalSum]);
+        }*/
+    },[selectedRoom.price, countDate, checkIn, checkOut/*,selectedServices, totalSum, steps*/]);
 
     useEffect(() => {
         if(steps === 3) {
@@ -59,7 +60,7 @@ function Reservation({rooms, postReservation, services}) {
             };
             setNewReservation(new1Reservation);
         }
-    },[checkIn, checkOut, firsName, lastName, email, telephone, specialRequest, totalSum, selectedRoom.id, steps]);
+    },[checkIn, checkOut, firsName, lastName, email, telephone, specialRequest, totalSum, selectedRoom.id, steps, selectedServices]);
 
     function Steps(){
         if(steps === 0) {
